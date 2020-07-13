@@ -1,0 +1,88 @@
+prompt()
+alert()
+/ is used to put '' in string.
+typeof -- used to know type of data.
+
+if(condition) {}
+elseif(condition) {}
+else {}
+
+ternary operator : 
+age >=13 ? 'beer' : 'juice';   (or)
+var drink = age >=13 ? 'beer' : 'juice';
+
+Switch statement :
+var job = 'teacher'
+switch (job){
+    case 'teacher':
+    case 'instructor':
+    console.log('kdjfl');
+    break;
+    case 'designer':
+    console.log('dfd);
+    break;
+    default:
+    console
+}
+
+age = 56;
+switch (true) {
+    case age < 13:
+        console.log(firstName + ' is a boy.');
+        break;
+    case age >= 13 && age < 20:
+        console.log(firstName + ' is a teenager.');
+        break;
+    case age >= 20 && age < 30:
+        console.log(firstName + ' is a young man.');
+        break;
+    default:
+        console.log(firstName + ' is a man.');
+}
+
+* Truthy and Falsy values and equality operators
+*/
+/*
+// falsy values: undefined, null, 0, '', NaN
+// truthy values: NOT falsy values
+
+names.length;
+john.push('blue'); 'adds to the last'
+john.unshift('Mr.'); 'add to first'
+john.pop(); 'removes last item'
+john.shift(); 'removes first item'
+john.indexof(); 'this will show index of item if its not there '-1' will be the result.'
+john.length; gives the length of an string or array
+
+Object literal:
+var john = {
+    name : 'kjl',
+    age : 25,
+    family : ['Jane', 'Mark', 'Bob', 'Emily'],
+    tip : function (){}
+}
+john.name === john['name']
+// new Object syntax
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+console.log(jane);
+*/
+
+// for loop
+for (var i = 1; i <= 20; i += 2) {
+    console.log(i);
+}
+
+// While loop
+var i = 0;
+while(i < john.length) {
+    console.log(john[i]);
+    i++;
+}
+
+// continue and break statements
+
+
+                        

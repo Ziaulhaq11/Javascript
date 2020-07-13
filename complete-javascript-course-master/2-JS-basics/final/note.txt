@@ -1,0 +1,4 @@
+prompt()
+alert()
+/ is used to put '' in string.
+typeof -- used to know type of data.
