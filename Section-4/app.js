@@ -1,24 +1,6 @@
 var scores,roundScore,activePlayer;
 
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
-
-/*for random generator we are using Math.random() function but it will return value b/w 0 & 1 . so to fix this we are multiplying the value with
-6 then we get 4.62654 like value . so we want integer not float. So we use Math.floor to convert float to int. But still it is giving the value
-from 0 to 6 to solve this we are adding +1 to the function so it will not be 0*/
-
-//document.querySelector('#current-' + activePlayer).textContent = dice; This is a setter since we are setting value
-//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'
-//var x = document.querySelector('#score-0').textContent; /*here its a getter we are getting the value.*/
-//console.log(x);
-
-//Setting display none to the dice image when its open
-document.querySelector('.dice').style.display = 'none';
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
+init();
 
 function nextPlayer() {
   //Next player
@@ -78,11 +60,46 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.querySelector('#name-' + activePlayer).textContent = 'Player' + activePlayer + 'wins the game.'
   }*/
 
-  if (scores[activePlayer] >= 100) {
-    document.querySelector('#name-' + activePlayer).textContent = 'Winner'
+  if (scores[activePlayer] >= 20) {
+    document.querySelector('#name-' + activePlayer).textContent = 'Winner';
+    var diceDom = document.querySelector('.dice')
+    diceDom.style.display = 'none';
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+    document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+  }else {
+    //Next Player
+    nextPlayer();
   }
-  //Next Player
-
-  nextPlayer();
-
 })
+
+
+document.querySelector('.btn-new').addEventListener('click', init);//we are not calling function otherwise it will call itself but we dont we want to
+  //happen when we click;
+
+
+function init() {
+  scores = [0,0];
+  roundScore = 0;
+  activePlayer = 0;
+
+  /*for random generator we are using Math.random() function but it will return value b/w 0 & 1 . so to fix this we are multiplying the value with
+  6 then we get 4.62654 like value . so we want integer not float. So we use Math.floor to convert float to int. But still it is giving the value
+  from 0 to 6 to solve this we are adding +1 to the function so it will not be 0*/
+
+  //document.querySelector('#current-' + activePlayer).textContent = dice; This is a setter since we are setting value
+  //document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'
+  //var x = document.querySelector('#score-0').textContent; /*here its a getter we are getting the value.*/
+  //console.log(x);
+
+  //Setting display none to the dice image when its open
+  document.querySelector('.dice').style.display = 'none';
+  document.getElementById('score-0').textContent = '0';
+  document.getElementById('score-1').textContent = '0';
+  document.getElementById('current-0').textContent = '0';
+  document.getElementById('current-1').textContent = '0';
+  document.querySelector('.player-0-panel').classList.remove('winner');
+  document.querySelector('.player-1-panel').classList.remove('active');
+  document.querySelector('#name-0').textContent = 'Player 1';
+  document.querySelector('#name-1').textContent = 'Player 2';
+}
+

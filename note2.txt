@@ -31,7 +31,7 @@ The main thing is the when object is created So then in creation phase it scann 
 same thing happened to the variable declarations as well but variables set to undefined as functions are not which we can see in  this example.
 Here in this below example we can see we call teh function first before declaring it and it works and it just for functions not for variables.
 
-ageCalc()
+ageCalc()````
 function ageCalc(year) {} 
 
 And it will only works with function declaration only not for the function expression. because it is not a function declaration its a expression.
@@ -73,3 +73,4 @@ john.ageCalc()
 
 
 mike.ageCalc = john.ageCalc   -- here no paranthesis because for calling paranthesis is required not for assigning;
+mike.ageCalc()  -- and now the this keyword shows the result of mike object not the john object.
