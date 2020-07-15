@@ -1,0 +1,5 @@
+                Dom (Document Object Model)
+
+Docs to refer Event Referrence  -- MDN (mozilla)
+Events   -- things which happen
+Event listener -- 

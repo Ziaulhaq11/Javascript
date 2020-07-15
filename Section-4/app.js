@@ -54,11 +54,11 @@ document.querySelector('.btn-roll').addEventListener('click', function() {   //1
     diceDom.style.display = 'block';
     diceDom.src = 'dice-'+ dice + '.png'
 
-
     //3.Update the round score if the rolled number was not 1
     if (dice !== 1) {
       //Add score
       roundScore += dice;
+      //Displaying score
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
     }else {
       nextPlayer();
@@ -72,9 +72,17 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 
   //Update the UI
   document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-  nextPlayer();
 
   //Check if player won the game
+/*  if (scores[activePlayer] >= 20) {
+    document.querySelector('#name-' + activePlayer).textContent = 'Player' + activePlayer + 'wins the game.'
+  }*/
 
+  if (scores[activePlayer] >= 100) {
+    document.querySelector('#name-' + activePlayer).textContent = 'Winner'
+  }
+  //Next Player
+
+  nextPlayer();
 
 })
