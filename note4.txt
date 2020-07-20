@@ -1,0 +1,40 @@
+Everything is an object :
+
+Primitives :
+Numbers
+strings
+booleans
+undefined
+null 
+
+Everything else : 
+Arrays
+functions
+objects
+dates
+wrappers for numbers,strings,booleans; all are objects
+
+1.Every oject in js has prototype property which makes Inheritance possible.
+2.The prototype property of an object is where we put methods and properties that we want other objects to Inherit
+3.The Constructor prototype is not a prototype of itself but its the prototype of all the instances that are created through it
+4.When a certain method or property is called, the search starts in object itself. and if it cant found the search moves on objects prototype.
+This continues until method is found. This is called protochain.
+
+Function cunstructor and we use prototype to assign the method or property not in the Constructor itself but you have to call them its ideal for methods not for property.
+
+Constructor is like a class 
+Constructor & instances
+
+new -- operator creates a empty object
+
+Console : 
+john -- gets all the information of this object
+Person.prototype  -- 
+john.__proto__ === Person.prototype
+john.hasOwnProperty('lastName')
+console.info(x)
+
+a = 3 ; b = a ; a = 4  //result will be a = 4 ; b = 3;
+obj1 ={
+    
+}

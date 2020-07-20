@@ -1,4 +1,10 @@
+/*1. A player looses his ENTIRE score when he rolls two 6 in a row. After that, it's the next player's turn. (Hint: Always save the previous dice roll in a separate variable)
+2. Add an input field to the HTML where players can set the winning score, so that they can change the predefined score of 100. (Hint: you can read that value with the .value property in JavaScript. This is a good oportunity to use google to figure this out :)
+3. Add another dice to the game, so that there are two dices now. The player looses his current score when one of them is a 1. (Hint: you will need CSS to position the second dice, so take a look at the CSS code for the first one.)
+*/
+
 var scores,roundScore,activePlayer,isPlaying;
+var lastDice;
 
 init();
 
@@ -41,16 +47,20 @@ document.querySelector('.btn-roll').addEventListener('click', function() {   //1
     document.getElementById('dice-2').src = 'dice-' + dice2 + '.png';
 
     //3.Update the round score if the rolled number was not 1
-    if (dice1 !== 1 && dice2 !== 1) {
+    if (dice1 === 6 && lastDice ===6) {
+      scores[activePlayer] = 0;
+      document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+      nextPlayer();
+    }else if (dice !== 1) {
       //Add score
-      roundScore += dice1 + dice2;
+      roundScore += dice1;
       //Displaying score
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
-    } else {
+    }else {
       nextPlayer();
     }
+    lastDice = dice1;
   }
-    
 })
 
 
@@ -62,25 +72,30 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     //Update the UI
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-    //Check if player won the game
-    /*  if (scores[activePlayer] >= 20) {
-        document.querySelector('#name-' + activePlayer).textContent = 'Player' + activePlayer + 'wins the game.'
-      }*/
-
-    if (scores[activePlayer] >= 20) {
-      document.querySelector('#name-' + activePlayer).textContent = 'Winner';
-      document.getElementById('dice-1').style.display = 'none';
-      document.getElementById('dice-2').style.display = 'none';
-      document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-      document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-      isPlaying = false;
-    } else {
-      //Next Player
-      nextPlayer();
+    var input = document.querySelector('.final-score').value;
+    var winningScore;
+    
+    //Undefined,0,'',null --- false;
+    if (input) {
+      winningScore = input;
+    }else {
+      winningScore = 100;
     }
-  }
-  
-})
+
+
+    if (scores[activePlayer] >= winningScore) {
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner';
+        document.getElementById('dice-1').style.display = 'none';
+        document.getElementById('dice-2').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        isPlaying = false;
+      } else {
+        //Next Player
+        nextPlayer();
+      }
+    }
+});
 
 
 document.querySelector('.btn-new').addEventListener('click', init);//we are not calling function otherwise it will call itself but we dont we want to
@@ -116,4 +131,5 @@ function init() {
   document.querySelector('#name-0').textContent = 'Player 1';
   document.querySelector('#name-1').textContent = 'Player 2';
 }
+
 

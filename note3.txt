@@ -3,3 +3,21 @@
 Docs to refer Event Referrence  -- MDN (mozilla)
 Events   -- things which happen
 Event listener -- 
+
+Random number : 
+var dice1 = Math.floor(Math.random() * 6) + 1;
+
+Removing and Adding classes of winner and active : 
+document.querySelector('.player-0-panel').classList.remove('winner');
+document.querySelector('.player-0-panel').classList.toggle('winner');
+
+Changing image source :
+document.getElementById('dice-1').src = 'dice-' + dice1 + '.png';
+
+Creating blank for all :
+document.querySelector('.player-0-panel').style.display = 'none';
+document.querySelector('.player-0-panel').textContent = '0';
+document.getElementById('dice-1').style.display = 'none';
+
+Adding Events:
+document.querySelector('.btn-hold').addEventListener('click', function() {
