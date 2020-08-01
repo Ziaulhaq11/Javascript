@@ -57,7 +57,8 @@ function change(a,b) {
 change(ages,obj);
 console.log(ages);
 console.log(obj.city);
-var x = 2;
-var y = 4;
-var z = x  + y
-console.log(z)
+
+var x = 5;
+var y = 10;
+z = x + y;
+console.log(z);
