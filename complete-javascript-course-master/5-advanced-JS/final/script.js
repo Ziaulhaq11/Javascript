@@ -74,6 +74,7 @@ var obj1 = {
     name: 'John',
     age: 26
 };
+
 var obj2 = obj1;
 obj1.age = 30;
 console.log(obj1.age);
@@ -174,7 +175,7 @@ interviewQuestion('teacher')('Mark');
 
 
 /////////////////////////////
-// Lecture: IIFE
+// Lecture: IIFE  (Immediately Invoked Function Expressions)
 /*
 function game() {
     var score = Math.random() * 10;
@@ -281,7 +282,7 @@ var years = [1990, 1965, 1937, 2005, 1998];
 function arrayCalc(arr, fn) {
     var arrRes = [];
     for (var i = 0; i < arr.length; i++) {
-        arrRes.push(fn(arr[i]));
+        arrRes.push(fn(arr[i]));   //Here the function is calling and it takes the argument as arr[i] here as el;
     }
     return arrRes;
 }
@@ -302,7 +303,6 @@ console.log(fullJapan);
 
 
 
-
 /////////////////////////////
 // CODING CHALLENGE
 
@@ -314,7 +314,6 @@ console.log(fullJapan);
 a) question itself
 b) the answers from which the player can choose the correct one (choose an adequate data structure here, array, object, etc.)
 c) correct answer (I would use a number for this)
-
 2. Create a couple of questions using the constructor
 
 3. Store them all inside an array
@@ -325,7 +324,7 @@ c) correct answer (I would use a number for this)
 
 6. Check if the answer is correct and print to the console whether the answer is correct ot nor (Hint: write another method for this).
 
-7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
+7. Suppose this code would be a plugin for other programmers to use in their code. So make sure  all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 */
 
 

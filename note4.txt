@@ -35,6 +35,51 @@ john.hasOwnProperty('lastName')
 console.info(x)
 
 a = 3 ; b = a ; a = 4  //result will be a = 4 ; b = 3;
-obj1 ={
-    
+var obj1 = {
+    name: 'zia',
+    age : 35
 }
+
+var obj2 = obj1
+obj1.age = 30  //result will be obj2 and obj1 = 30 because Primitives assign a storage but objects just has reference not copy
+
+var ages = 27;
+var obj = {
+    name : 'mehbul',
+    city : 'San Francisco'
+}
+
+function change(a,b) {
+    a = 30;
+    b.city = 'London'
+}
+
+change(ages,obj);
+console.log(ages);
+console.log(obj.city);    //result will be ages = 27 since it is a Primitives and obj.city will be changed to London. Because
+
+Generic Function , Callback Function
+calc(array, calculateAge);  -- This calculateAge function is a callback function because we are not calling this function by putting paranthesis.
+
+
+
+
+Returning function: 
+
+var answer = interview('teacher');
+answer('john')
+interview('designer') ('Mark');
+
+IIFY :
+(function () {
+    score = Math.random() * 10;
+    console.log(score >= 5);
+}) ();
+
+(function (goodLuck) {
+    var score = Math.random() * 10;
+    console.log(score >= 5 - goodLuck);
+}) (3);
+
+We are using IIFE to secure our code because all variables and functions are inside the function and nobody can interfere with those.
+
