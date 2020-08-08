@@ -54,6 +54,7 @@ var budgetController = (function () {
         },
         testing : function () {
             console.log(data.allitems.inc);
+            console.log(data.allitems.exp);
         }
     }
 
@@ -103,14 +104,15 @@ var UIController = (function () {
         },
 
         clearFields : function () {
-            var fields;
+            var fields,fieldsArr;
             fields = document.querySelectorAll(DOMStrings.inputDescription + ',' + DOMStrings.inputValue);   //it returns list not an array so we use a slice operator which copies the array.
-
+            
             //fields.slice() it will not work
-            var fieldsArr = Array.prototype.slice.call(fields);   //remember blind call apply methods. Remember this keyword so we put fields in the this field
-            
-            
-            
+            fieldsArr = Array.prototype.slice.call(fields);   //remember blind call apply methods. Remember this keyword so we put fields in the this field
+            fieldsArr.forEach(function(current,index,array) {
+                current.value = '';
+            });
+            fieldsArr[0].focus();
         },
 
         getDomstrings : function () {
@@ -147,9 +149,11 @@ var Controller = (function (budgetctrl, Uictrl) {
         //3.Add the itme to UI
         Uictrl.addListItem(newItem, input.type);
         Uictrl.clearFields();
-        //4.Calculate the budget
+        //4.Clear the fields
 
-        //5.Display budget to UI controller
+        //5.Calculate the budget
+
+        //6.Display budget to UI controller
 
     }
 
