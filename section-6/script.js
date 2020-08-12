@@ -63,6 +63,28 @@ var budgetController = (function () {
             return newItem;
         },
 
+        deleteItem : function (type,id) {
+            var ids, index;
+            //id = 6
+            //data.allitems[type][id]
+            //[1 2 4 6 8]   
+            //index = 3
+
+            ids = data.allitems[type].map(function(current) {
+                return current.id;
+            })
+
+            
+            index = ids.indexOf(id);
+            return console.log(ids,index);
+
+            if(index !== -1) {
+                data.allitems[type].splice()
+            }
+            
+
+        },
+
         calculateBudget : function() {
             //Calculate total incomes and expenses
             calcTotal('exp');
@@ -87,8 +109,7 @@ var budgetController = (function () {
             }
         },
         testing : function () {
-            console.log(data.allitems.inc);
-            console.log(data.allitems.exp);
+            console.log(data);
         }
     }
 
@@ -104,7 +125,12 @@ var UIController = (function () {
         inputValue : '.add__value',
         inputBtn: '.add__btn',
         incomeContainer : '.income__list',
-        expensesContainer: '.expenses__list'
+        expensesContainer: '.expenses__list',
+        budgetLabel: ".budget__value",
+        incomeLabel: '.budget__income--value',
+        expenseLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container'
     }
 
     return {
@@ -112,7 +138,7 @@ var UIController = (function () {
             return {
                 type : document.querySelector(DOMStrings.inputtype).value,   //here value will be not +- but value which we defined in html
                 description : document.querySelector(DOMStrings.inputDescription).value,
-                value : document.querySelector(DOMStrings.inputValue).value
+                value : parseFloat(document.querySelector(DOMStrings.inputValue).value)
             }
         },
 
@@ -122,10 +148,10 @@ var UIController = (function () {
             //Create HTMl string with placeholder text
             if (type === 'inc') {
                 element = DOMStrings.incomeContainer;
-                html = '<div class="item clearfix" id="income-%id%"> <div class="item__description">%description%</div> <div class="right clearfix"> <div class="item__value">%value%</div> <div class="item__delete">  <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+                html = '<div class="item clearfix" id="inc-%id%"> <div class="item__description">%description%</div> <div class="right clearfix"> <div class="item__value">%value%</div> <div class="item__delete">  <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             }else if (type === 'exp') {
                 element = DOMStrings.expensesContainer;
-                html = '<div class="item clearfix" id = "expense-%id%" ><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"> <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div >'
+                html = '<div class="item clearfix" id = "exp-%id%" ><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"> <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div >'
             }
 
             //Replace the placeholder text with some actual data
@@ -144,9 +170,23 @@ var UIController = (function () {
             //fields.slice() it will not work
             fieldsArr = Array.prototype.slice.call(fields);   //remember blind call apply methods. Remember this keyword so we put fields in the this field
             fieldsArr.forEach(function(current,index,array) {
-                current.value = '';
+                current.value = '';   //it will be value for both description and value. And in fieldsArr we just have selectors not the values and here we are passing blank value here.
             });
+
             fieldsArr[0].focus();
+        },
+
+        displayBudget : function(obj) {
+            document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
+            document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalInc;
+            document.querySelector(DOMStrings.expenseLabel).textContent = obj.totalExp;
+            if (obj.percent > 0) {
+                document.querySelector(DOMStrings.percentageLabel).textContent = obj.percent + '%';    
+            }else {
+                document.querySelector(DOMStrings.percentageLabel).textContent = '---';
+            }
+            
+
         },
 
         getDomstrings : function () {
@@ -163,42 +203,76 @@ var Controller = (function (budgetctrl, Uictrl) {
 
     eventListeners = function () {
         var DOM = Uictrl.getDomstrings();
-        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlitem);
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+        document.querySelector(DOM.container).addEventListener('click',ctrlDeleteItem);
 
         addEventListener('keypress', function (event) {
             if (event.keyCode === 13 || event.which === 13) {
-                ctrlitem();
+                ctrlAddItem();
             }
         })
     }
 
-    var ctrlitem = function () {
+    var updateBudget = function () {
+        //1..Calculate the budget
+        budgetController.calculateBudget();
+        //2.Return the budget
+        budget = budgetController.getBudget();
+        //3.Display budget to UI controller
+        Uictrl.displayBudget(budget);
+    }
+
+    var ctrlAddItem = function () {
         var input,newItem;
         //1.Get input data
         input = Uictrl.getInput();
-        console.log(input);
-        //2.Add the item to budget Controller
-        newItem = budgetctrl.addItem(input.type, input.description, input.value);
-        console.log(newItem);
-        //3.Add the itme to UI
-        Uictrl.addListItem(newItem, input.type);
-        Uictrl.clearFields();
-        //4.Clear the fields
+        if(input.description !== '' && !isNaN(input.value) && input.value > 0) {  //isNan returns True if there is no number 
 
-        //5.Calculate the budget
+            //2.Add the item to budget Controller
+            newItem = budgetctrl.addItem(input.type, input.description, input.value);
+            //3.Add the itme to UI
+            Uictrl.addListItem(newItem, input.type);
+            //4.Clear the fields
+            Uictrl.clearFields();
+            //5.Calculate and Update the budget
+            updateBudget();
 
-        //6.Display budget to UI controller
+        } 
+        
+    };
 
+    var ctrlDeleteItem = function (event) {
+        item = budgetController();
+        var itemID;
+        /*console.log(event.target);
+        itemID2 = event.target.id;
+        console.log(itemID2);*/
+        itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+        console.log(itemID);
+
+        if(itemID) {
+            //inc-1
+            splitID = itemID.split('-');
+            type = splitID[0];
+            id = splitID[1];
+        }
     }
 
     return {
         init : function() {
-            console.log('It has started');
-            return eventListeners();
-        }
+            Uictrl.displayBudget({
+                budget : 0,
+                totalInc : 0,
+                totalExp : 0,
+                percent : -1
+            });
+
+            eventListeners();
+        },
     }
 
 }) (budgetController, UIController);
 
 Controller.init();   //we can call it in the controller module itself but idk why we call here.
+//This function initialises first as we can see so in that we put budget = 0
 

@@ -1,0 +1,40 @@
+isNan(value)  ==>  returns true if its not a number
+newHtml = html.replace('%id%', obj.id);
+document.querySelector(element).insertAdjacentHTML('beforeend', newHtml)  ==> it inserts html into the page
+fields = document.querySelectorAll(DOMStrings.inputDescription + ',' + DOMStrings.inputValue); //it returns list not an array so we use a slice operator which copies the array.
+fieldsArr = Array.prototype.slice.call(fields);   //remember blind call apply methods. Remember this keyword so we put fields in the this field
+console.log(fieldsArr);
+fieldsArr.forEach(function(current,index,array) {
+    current.value = '';   //it will be value for both description and value. And in fieldsArr we just have selectors not the values and here we are passing blank value here.
+});
+
+fieldsArr[0].focus();
+addEventListener('keypress', function (event))
+itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+splitID = itemID.split('-');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Theory :
+
+
+//Event Delegation 
+In JavaScript programming when we interact with a DOM. All right, so in order to talk about event delegation, the first concept that we actually need to talk about is event bubbling. 
+Event bubbling means that when an event is fired or triggered on some DOM element, for example by clicking on our button here on the right side, then the exact same event is also triggered on all of the parent elements. Again, the event is first fired on the button, but then it will also be fired on all the parent elements one at a time, so it will also fire on the paragraph to the section the main element and actually all the way up in a DOM tree until the HTML element which is the root. So we say that the event bubbles up inside the DOM tree, and that's why it's called bubbling. 
+
+Now the element on which the event was actually first fired, so the element that caused the event to happen, is called the target element. In our example here it's, of course, the button that was clicked. The important part is that this target element is stored as a property in the event object, and we already talked about that one, right? This means that all the parent elements on which the event will also fire will know the target element of the event, so where the event was first fired. That brings us to event delegation because if the event bubbles up in the DOM tree, and if we know where the event was fired then we can simply attach an event handler to a parent element and wait for the event to bubble up, and we can then do whatever we intended to do with our target element. This technique is called event delegation.
+
+In this example here, we could simply add the event handler to the main element. All right, so again, event delegation is to not set up the event handler on the original element that we're interested in, but to attach it to a parent element and, basically, catch the event there because it bubbles up. We can then act on the element that we're interested in using the target element property. Why would we actually want to do this? Let's see, there are basically two big use cases for event delegation. 
+The first case is when we have an element with lots of child elements that we are interested in. In this case, instead of adding an event handler to all of these child elements, we simply add it to the parent element, and then determine on which child element the event was fired. 
+The second use case for event delegation is when we want an event handler attached to an element that is not yet in the DOM when our page is loaded. That's, of course, because we cannot add an event handler to something that's not on our page, so in a case of deprecation that we're coding, it's actually both cases, right? So we have a lot of expense or income items that are not in the DOM when we load our page, so there is no way to attach an event handler to them, and also there may be a lot of items, so it wouldn't be useful to have one event handler attached to each of them. That's why we're gonna use event delegation. Let's see it in practice in the next lecture.
