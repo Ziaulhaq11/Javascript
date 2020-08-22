@@ -1,4 +1,5 @@
 isNan(value)  ==>  returns true if its not a number
+id = data.allitems[type][data.allitems[type].length - 1].id + 1
 newHtml = html.replace('%id%', obj.id);
 document.querySelector(element).insertAdjacentHTML('beforeend', newHtml)  ==> it inserts html into the page
 fields = document.querySelectorAll(DOMStrings.inputDescription + ',' + DOMStrings.inputValue); //it returns list not an array so we use a slice operator which copies the array.
@@ -7,11 +8,18 @@ console.log(fieldsArr);
 fieldsArr.forEach(function(current,index,array) {
     current.value = '';   //it will be value for both description and value. And in fieldsArr we just have selectors not the values and here we are passing blank value here.
 });
-
+num = num.toFixed(2);
+int.substr(0, int.length - 3)
 fieldsArr[0].focus();
 addEventListener('keypress', function (event))
+if(event.key === )
 itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 splitID = itemID.split('-');
+now = new Date();   --- to get current Date
+year = now.getFullYear() // now.getMonth   -- month will return in numbers
+num = num.toFixed(2);
+int = int.substr(0, int.length - 3)
+
 
 
 

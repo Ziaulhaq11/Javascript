@@ -54,6 +54,7 @@ john.shift(); 'removes first item'
 john.indexof(); 'this will show index of item if its not there '-1' will be the result.'
 john.length; gives the length of an string or array
 parseInt() : converts string to int.
+parseFloat() : converts string to float.
 
 Object literal:
 var john = {

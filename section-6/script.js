@@ -88,9 +88,9 @@ var budgetController = (function () {
                 //the difference b/w map and foreach is map returns a brand new array. Where as we need to declare a variable for Foreach.  
                 return current.id;
             });
-            console.log(ids,id);
+            /*console.log(ids,id);
             index = ids.indexOf(id); //for ex : The ids variable stores all of ids and when we pass our id it will return the index of our id.
-            console.log(index);
+            console.log(index);*/
 
             //this exist because if item is not there it will return -1
             if(index !== -1) {  
@@ -147,8 +147,9 @@ var budgetController = (function () {
         }
     }
 
-}) ();
 
+
+}) ();
 
 //UI controller
 var UIController = (function () {
@@ -165,7 +166,8 @@ var UIController = (function () {
         expenseLabel: '.budget__expenses--value',
         percentageLabel: '.budget__expenses--percentage',
         container: '.container',
-        itemPercentage: '.item__percentage'
+        itemPercentage: '.item__percentage',
+        dateLabel: '.budget__title--month'
     }
 
     var formatNumber = function(num, type) {
@@ -193,6 +195,13 @@ var UIController = (function () {
         return type + ' ' + int + dec;*/
         return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;  //both are same
     };
+
+    var nodeListForEach = function (list, callback) {
+        for (var i = 0; i < list.length; i++) {
+            callback(list[i], i);
+        }
+    };
+
 
     //Previously formatNumber is in return. But we moved it above and for using we just use without 'this' keyword.
 
@@ -262,13 +271,7 @@ var UIController = (function () {
         displayPercentages : function(percentages) {
             var fields = document.querySelectorAll(DOMStrings.itemPercentage); //node list not array
             
-            var nodeListForEach = function(list, callback) {
-                for (var i = 0; i < list.length; i++) {
-                    callback(list[i], i);
-                }
-            };
-
-            nodeListForEach(fields, function (current, index) {  //calling the above function using these parameters.
+            nodeListForEach(fields, function (current, index) {  //calling the above function using these parameters. Fields parameter just for looping.
                 if (percentages[index] > 0) {
                     current.textContent = percentages[index] + '%';
                 } else {
@@ -276,6 +279,31 @@ var UIController = (function () {
                 }
                 
             })
+        },
+
+        displayMonth : function() {
+            var now,year,month,months;
+            now = new Date();
+            //christmas = new Date(2016,11,26); //month is 0 based so 11 is 12
+            months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+            year = now.getFullYear();
+            month = now.getMonth();
+            document.querySelector(DOMStrings.dateLabel).textContent = months[month] + ' '+ year;
+        },
+
+        changedType : function () {
+            fields = document.querySelectorAll(
+                DOMStrings.inputtype + ',' +
+                DOMStrings.inputDescription + ',' +
+                DOMStrings.inputValue
+            );
+
+            nodeListForEach(fields, function (cur) {
+                cur.classList.toggle('red-focus');
+            });
+
+            button = document.querySelector(DOMStrings.inputBtn).classList.toggle('red');
+            //button.classList.toggle('red');
         },
 
         getDomstrings : function () {
@@ -294,6 +322,7 @@ var Controller = (function (budgetctrl, Uictrl) {
         var DOM = Uictrl.getDomstrings();
         document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
         document.querySelector(DOM.container).addEventListener('click',ctrlDeleteItem);
+        document.querySelector(DOM.inputtype).addEventListener('change', Uictrl.changedType);
 
         addEventListener('keypress', function (event) {
             if (event.keyCode === 13 || event.which === 13) {
@@ -379,7 +408,7 @@ var Controller = (function (budgetctrl, Uictrl) {
                 totalExp : 0,
                 percent : -1
             });
-
+            Uictrl.displayMonth();
             eventListeners();
         },
     }

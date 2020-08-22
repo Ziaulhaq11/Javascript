@@ -1,0 +1,14 @@
+var --- Es5  we can change the values
+
+let --- similiar to var 
+const --- we cant change the values of these variables
+
+And the main difference is let and const are 'Block Scope' whereas var is 'function Scope';
+
+Template literals
+`${}`
+
+n.startsWith('th')
+n.endsWith('th')
+n.includes('th')
+n.repeat(5)
