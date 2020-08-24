@@ -12,3 +12,5 @@ n.startsWith('th')
 n.endsWith('th')
 n.includes('th')
 n.repeat(5)
+
+Array.from(boxes)  => converts nodelist to Array 

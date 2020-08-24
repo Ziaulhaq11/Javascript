@@ -42,7 +42,7 @@ for (i= 0 ; i<5 ; i++) {
     console.log(i);
 }
 
-console.log(i);   // result will be 0,1,2,3,4,5 .23 if both let  , if one 23 is let then it will be overwrites and for var it will overwrites.
+console.log(i);   // result will be 0,1,2,3,4,5.And 23 if both let  , if one 23 is let then it will be overwrites and for var it will overwrites.
 
 
 //Es6
@@ -186,7 +186,7 @@ new Person('Randy').myFriends6(friends);
 var john = ['John', 32];
 //var name = john[0];
 //var age = john[1];
-*/
+
 //Es6
 const [name,age] = ['John', 36];
 console.log(name)
@@ -205,4 +205,120 @@ const {firstName : a, lastName : b} = obj;
 console.log(a);
 console.log(b);
 
+function calcAgeRetirement(year) {
+    const age = new Date().getFullYear() - year;
+    return [age, 65-age];
+}
 
+const [age2, retirement] = calcAgeRetirement(1997);
+console.log(age2)
+console.log(retirement);*/
+
+//Lecture Arrays
+/*
+const boxes = document.querySelectorAll('.box');
+//Es5
+boxesArr5 = Array.prototype.slice.call(boxes);
+boxesArr5.forEach(function (cur) {
+    cur.style.backgroundColor = 'blue';
+});
+
+boxesArr6 = Array.from(boxes);
+boxesArr6.forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+//Another way because its a small method
+Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');*/
+
+//Es5
+/*
+for(var i = 0; i < boxesArr5.length; i++) {
+    if(boxesArr5[i].className === 'box blue') {
+        continue; //it will just continue as we can see but break completely exits from the loop.
+    }
+    boxesArr5[i].textContent = 'I am changed to blue';
+};*/
+/*
+for(const cur of boxesArr6) {
+    if(cur.className.includes('blue')) {
+    //if(cur.className === 'box blue'){
+        continue;
+    }
+    cur.textContent = 'I am changed to blue';
+};
+
+//Es5
+var ages = [17,15,19,14,35];
+var full = ages.map(function (cur) {
+    return cur >= 18;
+});
+console.log(full);
+
+console.log(full.indexOf(true))
+console.log(ages[full.indexOf(true)]);
+
+//Es6
+console.log(ages.findIndex(cur => cur >= 18));
+console.log(ages.find(cur => cur >=18));
+
+
+var i= 23;
+
+for (i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+console.log(i); */
+
+//Spread Operator  
+//So the new spread operator is a very convenient way to expand elements of an array in places like arguments and function calls. 
+
+//Es5
+/*
+function addFourAges (a, b, c, d) {
+    return a + b + c + d;
+}
+
+var sum1 = addFourAges(18, 22, 25, 32);
+console.log(sum1);
+
+ages = [18,22,25,32];
+var sum2 = addFourAges.apply(null, ages);
+console.log(sum2);
+
+//Es6
+const sum3 = addFourAges(...ages);
+console.log(sum3);
+
+const JohnFamily = ['John', 'Jane', 'Jine'];
+const MarkFamily = ['Miller', 'Mark', 'Marvel'];
+const BigFamily = [...JohnFamily, ...MarkFamily];
+console.log(BigFamily);
+
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+console.log(boxes);
+const full = [h, ...boxes];   //since h1 is not an array so we dont use dots here
+Array.from(full).forEach(cur => cur.style.color = 'white');
+//full.map(cur => cur.style.color = 'blue');
+console.log(typeof(JohnFamily));
+
+//Rest Parameters
+/*So, rest parameters allow us to pass an arbitrary number of arguments into a function, and to use these arguments in that function.*/
+//Es5
+function isFullAge5 () {
+    argumentsArr = Array.prototype.slice.call(arguments);
+    console.log(argumentsArr);
+    argumentsArr.forEach(function(cur) {
+        console.log((2020 - cur) >= 18);
+    });
+}
+
+//isFullAge5(1990,2005,1985,1965);
+
+//Es6
+function isFullAge6(...years) {
+    console.log(years);
+    years.forEach(cur => console.log((2020 - cur) >= 18));
+}
+
+isFullAge6(1990, 2010, 1985, 2003);

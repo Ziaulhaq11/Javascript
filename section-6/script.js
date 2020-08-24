@@ -96,8 +96,6 @@ var budgetController = (function () {
             if(index !== -1) {  
                 data.allitems[type].splice(index, 1)  //to remove the element
             }
-            
-
         },
 
         calculateBudget : function() {
