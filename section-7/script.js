@@ -305,6 +305,7 @@ console.log(typeof(JohnFamily));
 //Rest Parameters
 /*So, rest parameters allow us to pass an arbitrary number of arguments into a function, and to use these arguments in that function.*/
 //Es5
+/*
 function isFullAge5 () {
     argumentsArr = Array.prototype.slice.call(arguments);
     console.log(argumentsArr);
@@ -313,7 +314,7 @@ function isFullAge5 () {
     });
 }
 
-//isFullAge5(1990,2005,1985,1965);
+isFullAge5(1990,2005,1985,1965);
 
 //Es6
 function isFullAge6(...years) {
@@ -322,3 +323,55 @@ function isFullAge6(...years) {
 }
 
 isFullAge6(1990, 2010, 1985, 2003);
+
+function isFullAge5(limit) {
+    argumentsArr = Array.prototype.slice.call(arguments,1);  //so it will store from 1;
+    argumentsArr.forEach(function (cur) {
+        console.log((2020 - cur) >= limit);
+    });
+}
+
+//isFullAge5(21, 1990, 2005, 1985, 1965);
+
+//Es6
+function isFullAge6(limit,...years) {
+    console.log(years);
+    years.forEach(cur => console.log((2020 - cur) >= limit));
+}
+
+isFullAge6(17,1990, 2010, 1985, 2003);*/
+
+//Default Parameters 
+/*
+function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
+
+    lastName === undefined ? lastName = 'Smith' : lastName = lastName;
+    nationality === undefined ? nationality = 'American' : nationality = nationality;
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+}
+*/
+//Es6
+/*
+function SmithPerson (firstName, yearOfBirth, lastName = 'Smith', nationality = 'American') {
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+}
+
+var john = new SmithPerson('John', 1990, "miller", 'indian');
+console.log(john);*/
+
+//Maps
+
+const question = new Map();
+question.set('question','What is the latest name of the major Javascript version')
+question.set(1, 'Es5')
+question.set(2, 'Es6')
+question.set(3, 'Es7')
+question.set('correct', 3)
+question.set(true, 'Correct Answer ')
+question.set(false, 'Wrong, please try again')
