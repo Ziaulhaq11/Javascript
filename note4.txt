@@ -83,3 +83,20 @@ IIFY :
 
 We are using IIFE to secure our code because all variables and functions are inside the function and nobody can interfere with those.
 
+Closures :
+
+An inner function has always accessto the variables and parameters of its outer function,even after the outer function has returned.
+
+When function returns it gone from Execution context but in Scope chain the variables will be stored hence after returning the function also we are able to access those variables.
+
+
+Call, Apply, Bind :
+
+So the call method changes the 'this' so we can pass other object using the call method.
+Apply also same but it takes array as an Arguments. 
+Bind method doesnt immediately call the function as the other methods do instead it stores the value in a variable. And then we can use it further.And in bind method we can pass arguments later as well as we can see in the example.
+
+
+john.presentation.call(emily, 'friendly', 'afternoon');
+john.presentation.apply(emily, ['friendly', 'afternoon']);
+var johnFriendly = john.presentation.bind(john, 'friendly');

@@ -146,7 +146,6 @@ console.log(ages6);
 
 
 
-
 /////////////////////////////////
 // Lecture: Arrow functions 2
 
@@ -157,7 +156,8 @@ var box5 = {
     position: 1,
     clickMe: function() {
        
-       var self = this; document.querySelector('.green').addEventListener('click', function() {
+       var self = this; 
+       document.querySelector('.green').addEventListener('click', function() {
             var str = 'This is box number ' + self.position + ' and it is ' + self.color;
             alert(str);
         });
@@ -360,7 +360,7 @@ const h = document.querySelector('h1');
 const boxes = document.querySelectorAll('.box');
 const all = [h, ...boxes];
 
-Array.from(all).forEach(cur => cur.style.color = 'purple');
+Array.from(all).forEach(cur => cur.style.color = 'purple');f
 */
 
 
@@ -708,9 +708,8 @@ function reportParks(p) {
     console.log(`Our ${p.length} parks have an average of ${avgAge} years.`);
     
     // Which park has more than 1000 trees
-    const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
-    console.log(`${p[i].name} has more than 1000 trees.`);
-    
+    const i = p.map(el => el.numTrees).findIndex(el => el >= 1000); //
+    console.log(`${p[i].name} has more than 1000 trees.`);  
 }
 
 

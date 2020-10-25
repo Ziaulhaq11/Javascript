@@ -36,7 +36,7 @@ function ageCalc(year) {}
 
 And it will only works with function declaration only not for the function expression. because it is not a function declaration its a expression.
 ageCalc()
-var function ageCalc(year) {}
+var function ageCalc(year) {} 
 
 and for the variables it definitely shows undefined and be aware that it is showing undefined because in hoisting variable is declared if it was not declared then you wont get undefined as a result.
 console.log(age);
@@ -74,3 +74,4 @@ john.ageCalc()
 
 mike.ageCalc = john.ageCalc   -- here no paranthesis because for calling paranthesis is required not for assigning;
 mike.ageCalc()  -- and now the this keyword shows the result of mike object not the john object.
+

@@ -8,9 +8,28 @@ And the main difference is let and const are 'Block Scope' whereas var is 'funct
 Template literals
 `${}`
 
+const n = `${firstName} ${lastName}`;
 n.startsWith('th')
 n.endsWith('th')
 n.includes('th')
 n.repeat(5)
 
-Array.from(boxes)  => converts nodelist to Array 
+Array.from(boxes)  => converts nodelist to Array
+const now = new Date().getFullYear();
+
+ages.findIndex(cur => cur >= 18)
+ages.find(cur => cur>=18)
+
+Spread Operator : (...)
+We can pass the array as an argument 
+addFourAges(...ages)
+
+
+Rest Parameters :
+function isFullAge6(...years)
+isFullAge6(1990, 1999, 1965, 2016, 1987)
+
+class Person6 {
+    constructor (name, yearOfBirth, job)
+    calculateAge()
+    static greeting()

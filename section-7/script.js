@@ -366,7 +366,7 @@ var john = new SmithPerson('John', 1990, "miller", 'indian');
 console.log(john);*/
 
 //Maps
-
+/*
 const question = new Map();
 question.set('question','What is the latest name of the major Javascript version')
 question.set(1, 'Es5')
@@ -375,3 +375,136 @@ question.set(3, 'Es7')
 question.set('correct', 3)
 question.set(true, 'Correct Answer ')
 question.set(false, 'Wrong, please try again')
+
+/*console.log(question.get('question'));
+console.log(question.size);
+if (question.has(3)){
+    //question.delete(3)  //we can do this without using the if statement.
+}
+
+//question.clear()
+
+question.forEach((key, value) => (
+    console.log(`The value of ${key} is ${value}`)
+));
+
+a = [1,2,5,6,8]
+
+for(let [i,j] of a.entries()) {
+    console.log(i,j);
+}
+
+for(let [key, value] of question.entries()) {
+    if (typeof(key) === 'number') {
+        console.log(`Answer of ${key} : ${value}`);
+    }
+}
+
+ans = parseInt(prompt('Write the correct Answer'));
+console.log(question.get(ans === question.get('correct')));*/
+
+
+//Classes
+//Es5
+/*
+function Person5(name,yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person5.prototype.calcAge = function() {
+    this.age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(this.age);
+} 
+
+john5 = new Person5('John', 1990, 'teacher');
+john5.calcAge();
+console.log(john5);
+
+//Es6
+class Person6 {
+    constructor(name,yearOfBirth,job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge() {
+        this.age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(this.age)
+    }
+
+    static greetings() {
+        console.log('Hey there')  //instances cant inherit this method since its static
+    }
+}
+
+john6 = new Person6('John', 1982 , 'Programmer');
+john6.calculateAge()
+console.log(john6)
+
+Person6.greetings();*/
+
+
+//Classes with subclasses
+//Es5
+function Person5(name,yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person5.prototype.calcAge = function() {
+    this.age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(this.age);
+} 
+
+var Athlete5 = function(name,yearOfBirth, job, olympicGames, medals) {
+    Person5.call(this, name,yearOfBirth, job);
+    this.olympicGames = olympicGames;
+    this.medals = medals;
+} 
+
+Athlete5.prototype = Object.create(Person5.prototype) //first we set prototype property then we add methods as shown below
+
+Athlete5.prototype.wonMedal = function() {
+    this.medals ++;
+    console.log(this.medals);
+}
+
+var johnAthelete5 = new Athlete5('John', 1990, 'swimming', 3, 10)
+johnAthelete5.calcAge();
+johnAthelete5.wonMedal();
+
+
+//Es6
+class Person6 {
+    constructor(name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge() {
+        this.age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(this.age)
+    }
+}
+
+class Athlete6 extends Person6{
+    constructor (name,yearOfBirth, job, olympicGames, medals) {
+        super(name,yearOfBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+
+    wonMedal() {
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+johnAthelete6 = new Athlete6('John', 1990, 'swimmer', 3, 10);
+johnAthelete6.wonMedal();
+johnAthelete6.calculateAge();
