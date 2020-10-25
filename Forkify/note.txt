@@ -1,0 +1,48 @@
+https://cors-anywhere.herokuapp.com/ or "Moesif Origin & CORS Changer"  --chrome extension if websites not allowed to get api's
+Dist folder where our all final codes will save as we see bundle.js. And the src folder is for development 
+node /npm -v
+npm init
+npm install webpack --save-dev              -- devdependencies
+npm install webpack --save                  -- dependencies
+npm install webpack-cli --save-dev          
+npm uninstall packagename
+Deleting node_modules folder
+npm install                -- it will install the packages which we mention in json file and create a node_modules folder
+When we install packages with save or savedev those will only work in that project but when you use global it will work anywhere.
+npm install live-server --global/-g       --  sudo for linux
+npm run dev (which is the script name we write in package.json file)
+Then we create a html file and link with bundle.js and the result is displaying in console which is what we imported from test.js file.  Or we can run using node .
+We remove mode from config and put in json file as a script so we can toggle between production and development. And when we run production mode the bundle.js size get decreased.
+npm install webpack-dev-server --save-dev        -- It will automatically reloads browser when we change any code in js
+So in config we will add devServer and add contentbase to the folder dist. Then in json file we write a script to run.
+html-webpack-plugin
+After using html-webpack-plugin you need to delete index.html from dist. Its optional
+Devserver not store files on dist folder it will stream on the browser only. 
+For saving we need to run dev or build scripts these will bundle them and store on disc.
+Babel : 
+
+npm install --save-dev @babel/core @babel/preset-env babel-loader 
+npm install --save core-js@3 regenerator-runtime
+
+1.Core functionality of Compiler  2. It will take care of all Js features converted to Es5.  3.To load babel files
+Creating a .babelrc file as a config of babel.
+npm install babel-polyfill             -- some features like Promises or Array.from so these cant convert it to Es6 So we are polyfilling
+
+
+Importing and Exporting :
+index.js :
+import string from './models/Search';
+//import {add as a,mult as m,ID} from './views/searchView';
+import * as searchView from './views/searchView'
+
+console.log(`Using importing functions! ${searchView.add(searchView.ID , 2)} and ${searchView.mult(8,5)} and the ${string}`);
+
+Search.js :
+export default 'I am a search model';  //Default is used to export single value or line
+
+searchView.js:
+export const add = (a, b) => a+b;
+export const mult = (a, b) => a*b;
+export const ID = 5;
+
+npm install axios --save                 --alternate of fetch

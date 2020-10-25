@@ -1,0 +1,76 @@
+4. Section Intro
+5. Download the Code
+6. Let's start coding!
+7. A Brief Introduction to JavaScript
+8. Variables and Data Types
+9. Variable Mutation and Type Coercion
+10. Basic Operators
+11. Operator Precedence
+12. Coding Challenge 
+13. Coding Challenge 
+14: Solution14. If / else Statements
+15. Boolean Logic 
+16. The Ternary Operator and Switch Statements
+17. Truthy and Falsy Values and Equality Operato
+18. Coding Challenge 2
+19. Coding Challenge 2: Solution
+20. Functions
+21. Function Statements and Expressions
+22. Arrays
+23. Coding Challenge 3
+24. Coding Challenge 3: Solution
+25. Objects and Properties
+26. Objects and Methods
+27. Coding Challenge 4
+28. Coding Challenge 4: Solution
+29. Loops and Iteration 
+30. Coding Challenge 5
+31. Coding Challenge 5: Solution, Part 1
+32. Coding Challenge 5: Solution, Part 2
+33. JavaScript Versions: ES5, ES6 / ES2015 and ES6+
+
+
+Section-5 :
+58. Section Intro
+59. Download the Code 
+60. Everything Is an Object: Inheritance and the Prototype Chain
+61. Creating Objects: Function Constructors 
+62. The Prototype Chain in the Console
+63. Creating Objects: Object.create  
+64. Primitives vs. Objects 
+65. First Class Functions: Passing Functions as Arguments
+66. First Class Functions: Functions Returning Functions 
+67. Immediately Invoked Function Expressions (IIFE) 
+68. Closures 
+69. Bind, Call and Apply
+
+
+Section - 7  ES6:
+
+101. Section Intro
+102. Download the Code
+103. What's new in ES6 / ES2015
+104. Variable Declarations with let and const
+105. Blocks and IIFEs
+106. Strings in ES6 / ES2015  
+107. Arrow Functions: Basics 
+108. Arrow Functions: Lexical 'this' Keyword
+109. Destructuring
+110. Arrays in ES6 / ES2015 
+111. The Spread Operator
+112. Rest Parameters
+113. Default Parameters 
+114. Maps
+115. Classes
+
+Section - 8 :
+
+119. Section Intro
+120. An Example of Asynchronous JavaScript
+121. Understanding Asynchronous JavaScript: The Event Loop
+122. The Old Way: Asynchronous JavaScript with Callbacks
+123. From Callback Hell to Promises
+124. From Promises to Async/Await
+125. AJAX and APIs
+126. Making AJAX Calls with Fetch and Promises
+127. Making AJAX Calls with Fetch and Async/Await

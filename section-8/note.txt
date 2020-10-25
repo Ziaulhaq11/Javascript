@@ -1,0 +1,33 @@
+
+Promises :
+
+Oject that keep track about whether certain event happened or not
+
+Determines what happens after that event has happened. And event here is Asynchronous event
+
+Implements teh concept of a future value that we're expecting
+
+Pending 
+
+settled/resolved
+
+fulfilled / rejected
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AJAX and API
+ So AJAX stands for Asynchronous Javascript And XML. And basically, it allows us to asynchronously communicate with remote servers. So let's say we have our JavaScript app running in the browser, which is called the client. And we want the app to get some data from our server. But of course, without having to reload the entire page. Well, with AJAX we can do a simple get HTTP request, to our server, which will then send back a response containing the data that we requested. And this all happens asynchronously in the background just the way we learned before. Also, of course, this not only works for getting data from the server, but also to send data to the server by doing a post request rather than a get request. Now, in practice, there are many ways in which we can do AJAX in Javascript. And we're gonna look at the fetch web API in the next lecture, which will allow us to make some AJAX calls in a very easy way. Alright, and since we were talking about servers, we also have to talk about APIs. So, API stands for Application Programming Interface and on a very high level, it's basically a piece of software that can be used by another piece of software in order to basically allow applications to talk to each other. And that's not just valid for web development in Javascript, but for programming in general, okay? But now, in reference to web development and AJAX and servers, well, the API is not the server itself, but it's like a part of the server. Like an application that receives requests and sends back responses. So let's distinguish between two types of APIs that you can use in Javascript. Which are your own APIs or external, third-party APIs. So let's imagine for a second, that you're building a traveling app. And you have the database with different destinations and tours that you're offering. So on your server, you could build your own API that can receive requests from your front end app in Javascript and send back the results. So that would be your own API hosted on your own server. But now, you also need some current weather information for each destination, which you don't have in your database. And so you can use a third party API to get that weather data, okay? That makes sense, right? And there are actually all kinds of third party APIs out there. Like to include Google Maps into your app, or to embed YouTube videos to get data about movies, or even to send emails or text messages from the Venmo app.
